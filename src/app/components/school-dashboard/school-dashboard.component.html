@@ -1,0 +1,78 @@
+<div class="row d-flex justify-content-center modalWrapper mt-5">
+    <div mdbModal #modalAdd="mdbModal" class="modal fade addNewInputs" id="modalAdd" tabindex="-1" role="dialog"
+        aria-labelledby="modalAdd" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold text-primary ml-5">Add New Details</h4>
+                    <button type="button" class="close text-primary" (click)="modalAdd.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <form #addForm>
+                        <div class="md-form mb-5">
+                            <input type="text" id="inputName" class="form-control validate" mdbInput>
+                            <label data-error="wrong" data-success="right" for="inputName">Name</label>
+                        </div>
+
+                        <div class="md-form mb-5">
+                            <input type="text" id="inputEmail" class="form-control validate" mdbInput>
+                            <label data-error="wrong" data-success="right" for="inputEmail">Email</label>
+                        </div>
+
+                        <div class="md-form mb-5">
+                            <input type="text" id="inputId" class="form-control validate" mdbInput>
+                            <label data-error="wrong" data-success="right" for="inputId">Id</label>
+                        </div>
+
+                        <select class="browser-default custom-select">
+                            <option selected>Modules</option>
+                            <option value="1">Commerce</option>
+                            <option value="2">Engineering</option>
+                            <option value="3">Law</option>
+                            <option value="3">Information Technology</option>
+                        </select>
+
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-center buttonAddFormWrapper">
+                    <button mdbBtn color="primary" outline="true" block="true" class="buttonAdd" data-dismiss="modal"
+                        (click)="addModalForm(addForm, modalAdd)">Save
+                        <i class="fas fa-paper-plane-o ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-center">
+            <a mdbBtn color="info" rounded="true" size="sm" (click)="modalAdd.show()" data-target="#modalAdd"
+                mdbWavesEffect>
+                Add <i class="fas fa-plus-square ml-1"></i></a>
+        </div>
+    </div>
+
+
+    <div class="container mt-5">
+        <table mdbTable striped="true">
+            <thead>
+                <tr>
+                    <th *ngFor="let head of headElements" scope="col">{{head}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr mdbTableCol *ngFor="let el of elements">
+                    <td>{{ el.Name }}</td>
+                    <td>{{ el.Email }}</td>
+                    <td>{{ el.Id }}</td>
+                    <td>{{ el.Modules }}</td>
+                    <td>{{ el.Date }}</td>
+                    <td></td>
+                    <td>
+                        <a type="button" mdbBtn color="primary" mdbWavesEffect routerLink="{el.Id}">View</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
